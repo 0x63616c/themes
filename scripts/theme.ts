@@ -2,8 +2,16 @@ import palette from "../palette/palette.json";
 
 export type Palette = typeof palette;
 
-/** Append an 8-bit alpha (e.g. "26") to a "#rrggbb" color. */
+export interface TokenColorRule {
+  scope: string[];
+  settings: { foreground?: string; fontStyle?: string };
+}
+
+/** Append an 8-bit alpha (e.g. "26") to a `#rrggbb` color. `hex` must be `#rrggbb`. */
 export function alpha(hex: string, aa: string): string {
+  if (hex.length !== 7) {
+    throw new Error(`alpha() expects a #rrggbb color, got "${hex}"`);
+  }
   return hex + aa;
 }
 
@@ -91,7 +99,7 @@ function chromeColors(p: Palette): Record<string, string> {
     "tab.activeBackground": p.bg,
     "tab.inactiveBackground": p.bg,
     "tab.activeForeground": p.fg,
-    "tab.inactiveForeground": "#6a6a6a",
+    "tab.inactiveForeground": p.comment,
     "tab.border": p.border,
     "tab.hoverBackground": p.currentLine,
     "tab.unfocusedActiveBorder": p.border,
@@ -212,7 +220,7 @@ function baseColors(p: Palette): Record<string, string> {
   };
 }
 
-function tokenColors(p: Palette) {
+function tokenColors(p: Palette): TokenColorRule[] {
   return [
     { scope: ["comment", "punctuation.definition.comment"], settings: { foreground: p.comment, fontStyle: "italic" } },
     { scope: ["keyword", "storage", "storage.type", "storage.modifier", "keyword.control", "keyword.operator.new", "keyword.operator.expression"], settings: { foreground: p.kw } },

@@ -1,4 +1,5 @@
 import { test, expect } from "bun:test";
+import { readFileSync } from "node:fs";
 import { buildTheme } from "../scripts/theme";
 
 const theme = buildTheme();
@@ -117,18 +118,19 @@ test("every color in output is a palette color (opaque) or palette+alpha", () =>
   const values = [
     ...Object.values(theme.colors),
     ...theme.tokenColors.flatMap(r => r.settings.foreground ? [r.settings.foreground] : []),
-  ];
+    ...Object.values(theme.semanticTokenColors).flatMap(v => typeof v === "object" ? [v.foreground ?? ""] : [v]),
+  ].filter(v => v !== "");
   for (const v of values) {
     const base = v.length === 9 ? v.slice(0, 7) : v;
     expect(paletteValues.has(base) || base === "#000000").toBe(true);
   }
 });
 
-test("every palette role is referenced somewhere", () => {
-  const serialized = JSON.stringify(theme);
-  for (const [name, hex] of Object.entries(palette)) {
+test("every palette role is referenced in theme.ts", () => {
+  const source = readFileSync(new URL("../scripts/theme.ts", import.meta.url), "utf8");
+  for (const name of Object.keys(palette)) {
     if (name === "transparent") continue;
-    expect(serialized.includes(hex)).toBe(true);
+    expect(source.includes(`p.${name}`)).toBe(true);
   }
 });
 
