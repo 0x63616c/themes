@@ -58,3 +58,11 @@ test("git + terminal map to the semantic palette", () => {
   expect(theme.colors["terminal.ansiGreen"]).toBe("#34d399");
   expect(theme.colors["terminal.ansiRed"]).toBe("#fb5a4b");
 });
+
+test("bracket pairs cycle 3 muted hues", () => {
+  expect(theme.colors["editorBracketHighlight.foreground1"]).toBe("#6f9bff");
+  expect(theme.colors["editorBracketHighlight.foreground2"]).toBe("#e0b06a");
+  expect(theme.colors["editorBracketHighlight.foreground3"]).toBe("#5cc593");
+  expect(theme.colors["editorBracketHighlight.foreground4"]).toBe("#6f9bff");
+  expect(theme.colors["editorBracketHighlight.unexpectedBracket.foreground"]).toBe("#fb5a4b");
+});

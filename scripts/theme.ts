@@ -16,6 +16,7 @@ export function buildTheme(p: Palette = palette) {
     ...chromeColors(p),
     ...gitAndDiff(p),
     ...terminalColors(p),
+    ...bracketColors(p),
   };
   return {
     name: "Blackout",
@@ -24,6 +25,18 @@ export function buildTheme(p: Palette = palette) {
     colors,
     tokenColors: [] as Array<{ scope: string[]; settings: { foreground?: string; fontStyle?: string } }>,
     semanticTokenColors: {} as Record<string, string | { foreground?: string; fontStyle?: string }>,
+  };
+}
+
+function bracketColors(p: Palette): Record<string, string> {
+  return {
+    "editorBracketHighlight.foreground1": p.bracket1,
+    "editorBracketHighlight.foreground2": p.bracket2,
+    "editorBracketHighlight.foreground3": p.bracket3,
+    "editorBracketHighlight.foreground4": p.bracket1,
+    "editorBracketHighlight.foreground5": p.bracket2,
+    "editorBracketHighlight.foreground6": p.bracket3,
+    "editorBracketHighlight.unexpectedBracket.foreground": p.error,
   };
 }
 

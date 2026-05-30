@@ -139,7 +139,14 @@
     "terminal.ansiCyan": "#57cdef",
     "terminal.ansiBrightCyan": "#7fdcf5",
     "terminal.ansiWhite": "#cfcfcf",
-    "terminal.ansiBrightWhite": "#ededed"
+    "terminal.ansiBrightWhite": "#ededed",
+    "editorBracketHighlight.foreground1": "#6f9bff",
+    "editorBracketHighlight.foreground2": "#e0b06a",
+    "editorBracketHighlight.foreground3": "#5cc593",
+    "editorBracketHighlight.foreground4": "#6f9bff",
+    "editorBracketHighlight.foreground5": "#e0b06a",
+    "editorBracketHighlight.foreground6": "#5cc593",
+    "editorBracketHighlight.unexpectedBracket.foreground": "#fb5a4b"
   },
   "tokenColors": [],
   "semanticTokenColors": {}
