@@ -12,6 +12,7 @@ export function buildTheme(p: Palette = palette) {
     ...baseColors(p),
     ...accentColors(p),
     ...noShadow(p),
+    ...editorDetail(p),
   };
   return {
     name: "Blackout",
@@ -20,6 +21,28 @@ export function buildTheme(p: Palette = palette) {
     colors,
     tokenColors: [] as Array<{ scope: string[]; settings: { foreground?: string; fontStyle?: string } }>,
     semanticTokenColors: {} as Record<string, string | { foreground?: string; fontStyle?: string }>,
+  };
+}
+
+function editorDetail(p: Palette): Record<string, string> {
+  return {
+    "editor.lineHighlightBackground": p.currentLine,
+    "editor.lineHighlightBorder": p.transparent,
+    "editor.selectionBackground": p.selection,
+    "editor.selectionHighlightBackground": alpha(p.selection, "99"),
+    "editor.inactiveSelectionBackground": alpha(p.selection, "80"),
+    "editor.wordHighlightBackground": alpha(p.selection, "99"),
+    "editor.findMatchBackground": alpha(p.accent, "55"),
+    "editor.findMatchHighlightBackground": alpha(p.accent, "33"),
+    "editorLineNumber.foreground": p.lineNr,
+    "editorLineNumber.activeForeground": p.lineNrActive,
+    "editorIndentGuide.background1": p.border,
+    "editorIndentGuide.activeBackground1": p.borderStrong,
+    "editorWhitespace.foreground": p.border,
+    "editorBracketMatch.background": p.transparent,
+    "editorBracketMatch.border": p.borderStrong,
+    "editorRuler.foreground": p.border,
+    "editorGutter.background": p.bg,
   };
 }
 

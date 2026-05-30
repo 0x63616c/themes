@@ -31,3 +31,11 @@ test("no live shadows", () => {
     if (key.endsWith(".shadow")) expect(value).toBe("#00000000");
   }
 });
+
+test("current line + selection are the quiet grays", () => {
+  expect(theme.colors["editor.lineHighlightBackground"]).toBe("#0a0a0a");
+  expect(theme.colors["editor.lineHighlightBorder"]).toBe("#00000000");
+  expect(theme.colors["editor.selectionBackground"]).toBe("#232323");
+  expect(theme.colors["editorLineNumber.foreground"]).toBe("#3a3a3a");
+  expect(theme.colors["editorLineNumber.activeForeground"]).toBe("#8a8a8a");
+});
