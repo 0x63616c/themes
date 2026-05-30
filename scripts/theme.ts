@@ -13,6 +13,7 @@ export function buildTheme(p: Palette = palette) {
     ...accentColors(p),
     ...noShadow(p),
     ...editorDetail(p),
+    ...chromeColors(p),
   };
   return {
     name: "Blackout",
@@ -21,6 +22,54 @@ export function buildTheme(p: Palette = palette) {
     colors,
     tokenColors: [] as Array<{ scope: string[]; settings: { foreground?: string; fontStyle?: string } }>,
     semanticTokenColors: {} as Record<string, string | { foreground?: string; fontStyle?: string }>,
+  };
+}
+
+function chromeColors(p: Palette): Record<string, string> {
+  return {
+    "tab.activeBackground": p.bg,
+    "tab.inactiveBackground": p.bg,
+    "tab.activeForeground": p.fg,
+    "tab.inactiveForeground": "#6a6a6a",
+    "tab.border": p.border,
+    "tab.hoverBackground": p.currentLine,
+    "tab.unfocusedActiveBorder": p.border,
+    "list.activeSelectionBackground": p.currentLine,
+    "list.activeSelectionForeground": p.fg,
+    "list.inactiveSelectionBackground": p.currentLine,
+    "list.inactiveSelectionForeground": p.fg,
+    "list.hoverBackground": p.currentLine,
+    "list.focusOutline": p.accent,
+    "button.background": p.neutral,
+    "button.foreground": p.bg,
+    "button.hoverBackground": "#d4d4d4",
+    "button.secondaryBackground": p.currentLine,
+    "button.secondaryForeground": p.fg,
+    "input.background": p.bg,
+    "input.foreground": p.fg,
+    "input.border": p.border,
+    "input.placeholderForeground": p.fgFaint,
+    "inputOption.activeBorder": p.accent,
+    "dropdown.background": p.bg,
+    "dropdown.border": p.border,
+    "dropdown.foreground": p.fg,
+    "quickInput.background": p.bg,
+    "quickInput.foreground": p.fg,
+    "pickerGroup.border": p.border,
+    "pickerGroup.foreground": p.accent,
+    "quickInputList.focusBackground": p.currentLine,
+    "editorWidget.background": p.bg,
+    "editorWidget.border": p.border,
+    "editorHoverWidget.background": p.bg,
+    "editorHoverWidget.border": p.border,
+    "editorSuggestWidget.background": p.bg,
+    "editorSuggestWidget.border": p.border,
+    "editorSuggestWidget.selectedBackground": p.currentLine,
+    "notifications.background": p.bg,
+    "notifications.border": p.border,
+    "scrollbarSlider.background": alpha(p.fg, "1a"),
+    "scrollbarSlider.hoverBackground": alpha(p.fg, "2a"),
+    "scrollbarSlider.activeBackground": alpha(p.fg, "3a"),
   };
 }
 

@@ -39,3 +39,13 @@ test("current line + selection are the quiet grays", () => {
   expect(theme.colors["editorLineNumber.foreground"]).toBe("#3a3a3a");
   expect(theme.colors["editorLineNumber.activeForeground"]).toBe("#8a8a8a");
 });
+
+test("chrome surfaces stay black with white primary button", () => {
+  expect(theme.colors["tab.activeBackground"]).toBe("#000000");
+  expect(theme.colors["tab.inactiveForeground"]).toBe("#6a6a6a");
+  expect(theme.colors["button.background"]).toBe("#ededed");
+  expect(theme.colors["button.foreground"]).toBe("#000000");
+  expect(theme.colors["list.activeSelectionBackground"]).toBe("#0a0a0a");
+  expect(theme.colors["input.background"]).toBe("#000000");
+  expect(theme.colors["quickInput.background"]).toBe("#000000");
+});
