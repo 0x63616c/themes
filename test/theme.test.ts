@@ -8,6 +8,7 @@ test("core surfaces are pure black", () => {
   for (const key of [
     "editor.background", "sideBar.background", "activityBar.background",
     "statusBar.background", "panel.background", "terminal.background",
+    "sideBarSectionHeader.background",
   ]) {
     expect(theme.colors[key]).toBe("#000000");
   }
