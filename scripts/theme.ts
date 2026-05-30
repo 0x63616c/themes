@@ -23,8 +23,8 @@ export function buildTheme(p: Palette = palette) {
     type: "dark" as const,
     semanticHighlighting: true,
     colors,
-    tokenColors: [] as Array<{ scope: string[]; settings: { foreground?: string; fontStyle?: string } }>,
-    semanticTokenColors: {} as Record<string, string | { foreground?: string; fontStyle?: string }>,
+    tokenColors: tokenColors(p),
+    semanticTokenColors: semanticTokens(p),
   };
 }
 
@@ -209,5 +209,52 @@ function baseColors(p: Palette): Record<string, string> {
     "titleBar.border": p.border,
     "editorGroupHeader.tabsBackground": p.bg,
     "editorGroup.border": p.border,
+  };
+}
+
+function tokenColors(p: Palette) {
+  return [
+    { scope: ["comment", "punctuation.definition.comment"], settings: { foreground: p.comment, fontStyle: "italic" } },
+    { scope: ["keyword", "storage", "storage.type", "storage.modifier", "keyword.control", "keyword.operator.new", "keyword.operator.expression"], settings: { foreground: p.kw } },
+    { scope: ["string", "string.quoted", "string.template", "punctuation.definition.string"], settings: { foreground: p.str } },
+    { scope: ["string.regexp", "constant.character.escape"], settings: { foreground: p.str } },
+    { scope: ["constant.numeric", "constant.language", "constant.language.boolean", "constant.language.null", "constant.language.undefined"], settings: { foreground: p.num } },
+    { scope: ["entity.name.function", "support.function", "meta.function-call.generic", "variable.function"], settings: { foreground: p.fn } },
+    { scope: ["entity.name.type", "entity.name.class", "support.type", "support.class", "entity.other.inherited-class", "entity.name.namespace"], settings: { foreground: p.type } },
+    { scope: ["entity.name.tag", "support.type.primitive", "support.type.builtin"], settings: { foreground: p.type } },
+    { scope: ["entity.other.attribute-name"], settings: { foreground: p.fn } },
+    { scope: ["variable", "variable.other", "variable.other.readwrite", "meta.definition.variable"], settings: { foreground: p.var } },
+    { scope: ["variable.parameter"], settings: { foreground: p.var } },
+    { scope: ["variable.other.property", "variable.other.object.property", "meta.object-literal.key", "support.variable.property"], settings: { foreground: p.var } },
+    { scope: ["punctuation", "meta.brace", "keyword.operator", "punctuation.separator", "punctuation.terminator"], settings: { foreground: p.punct } },
+    { scope: ["meta.decorator", "punctuation.decorator", "entity.name.function.decorator"], settings: { foreground: p.fn } },
+    { scope: ["invalid", "invalid.illegal", "invalid.deprecated"], settings: { foreground: p.error } },
+  ];
+}
+
+function semanticTokens(p: Palette): Record<string, string | { foreground?: string; fontStyle?: string }> {
+  return {
+    "keyword": p.kw,
+    "string": p.str,
+    "number": p.num,
+    "boolean": p.num,
+    "regexp": p.str,
+    "function": p.fn,
+    "method": p.fn,
+    "function.declaration": p.fn,
+    "type": p.type,
+    "class": p.type,
+    "interface": p.type,
+    "enum": p.type,
+    "enumMember": p.num,
+    "typeParameter": p.type,
+    "namespace": p.type,
+    "variable": p.var,
+    "variable.readonly": p.var,
+    "parameter": p.var,
+    "property": p.var,
+    "decorator": p.fn,
+    "operator": p.punct,
+    "comment": { foreground: p.comment, fontStyle: "italic" },
   };
 }

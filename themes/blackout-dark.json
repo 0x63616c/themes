@@ -148,6 +148,193 @@
     "editorBracketHighlight.foreground6": "#5cc593",
     "editorBracketHighlight.unexpectedBracket.foreground": "#fb5a4b"
   },
-  "tokenColors": [],
-  "semanticTokenColors": {}
+  "tokenColors": [
+    {
+      "scope": [
+        "comment",
+        "punctuation.definition.comment"
+      ],
+      "settings": {
+        "foreground": "#6a6a6a",
+        "fontStyle": "italic"
+      }
+    },
+    {
+      "scope": [
+        "keyword",
+        "storage",
+        "storage.type",
+        "storage.modifier",
+        "keyword.control",
+        "keyword.operator.new",
+        "keyword.operator.expression"
+      ],
+      "settings": {
+        "foreground": "#9a86ff"
+      }
+    },
+    {
+      "scope": [
+        "string",
+        "string.quoted",
+        "string.template",
+        "punctuation.definition.string"
+      ],
+      "settings": {
+        "foreground": "#46d889"
+      }
+    },
+    {
+      "scope": [
+        "string.regexp",
+        "constant.character.escape"
+      ],
+      "settings": {
+        "foreground": "#46d889"
+      }
+    },
+    {
+      "scope": [
+        "constant.numeric",
+        "constant.language",
+        "constant.language.boolean",
+        "constant.language.null",
+        "constant.language.undefined"
+      ],
+      "settings": {
+        "foreground": "#f47ea0"
+      }
+    },
+    {
+      "scope": [
+        "entity.name.function",
+        "support.function",
+        "meta.function-call.generic",
+        "variable.function"
+      ],
+      "settings": {
+        "foreground": "#ffb454"
+      }
+    },
+    {
+      "scope": [
+        "entity.name.type",
+        "entity.name.class",
+        "support.type",
+        "support.class",
+        "entity.other.inherited-class",
+        "entity.name.namespace"
+      ],
+      "settings": {
+        "foreground": "#57cdef"
+      }
+    },
+    {
+      "scope": [
+        "entity.name.tag",
+        "support.type.primitive",
+        "support.type.builtin"
+      ],
+      "settings": {
+        "foreground": "#57cdef"
+      }
+    },
+    {
+      "scope": [
+        "entity.other.attribute-name"
+      ],
+      "settings": {
+        "foreground": "#ffb454"
+      }
+    },
+    {
+      "scope": [
+        "variable",
+        "variable.other",
+        "variable.other.readwrite",
+        "meta.definition.variable"
+      ],
+      "settings": {
+        "foreground": "#ededed"
+      }
+    },
+    {
+      "scope": [
+        "variable.parameter"
+      ],
+      "settings": {
+        "foreground": "#ededed"
+      }
+    },
+    {
+      "scope": [
+        "variable.other.property",
+        "variable.other.object.property",
+        "meta.object-literal.key",
+        "support.variable.property"
+      ],
+      "settings": {
+        "foreground": "#ededed"
+      }
+    },
+    {
+      "scope": [
+        "punctuation",
+        "meta.brace",
+        "keyword.operator",
+        "punctuation.separator",
+        "punctuation.terminator"
+      ],
+      "settings": {
+        "foreground": "#9a9a9a"
+      }
+    },
+    {
+      "scope": [
+        "meta.decorator",
+        "punctuation.decorator",
+        "entity.name.function.decorator"
+      ],
+      "settings": {
+        "foreground": "#ffb454"
+      }
+    },
+    {
+      "scope": [
+        "invalid",
+        "invalid.illegal",
+        "invalid.deprecated"
+      ],
+      "settings": {
+        "foreground": "#fb5a4b"
+      }
+    }
+  ],
+  "semanticTokenColors": {
+    "keyword": "#9a86ff",
+    "string": "#46d889",
+    "number": "#f47ea0",
+    "boolean": "#f47ea0",
+    "regexp": "#46d889",
+    "function": "#ffb454",
+    "method": "#ffb454",
+    "function.declaration": "#ffb454",
+    "type": "#57cdef",
+    "class": "#57cdef",
+    "interface": "#57cdef",
+    "enum": "#57cdef",
+    "enumMember": "#f47ea0",
+    "typeParameter": "#57cdef",
+    "namespace": "#57cdef",
+    "variable": "#ededed",
+    "variable.readonly": "#ededed",
+    "parameter": "#ededed",
+    "property": "#ededed",
+    "decorator": "#ffb454",
+    "operator": "#9a9a9a",
+    "comment": {
+      "foreground": "#6a6a6a",
+      "fontStyle": "italic"
+    }
+  }
 }

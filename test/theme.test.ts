@@ -66,3 +66,29 @@ test("bracket pairs cycle 3 muted hues", () => {
   expect(theme.colors["editorBracketHighlight.foreground4"]).toBe("#6f9bff");
   expect(theme.colors["editorBracketHighlight.unexpectedBracket.foreground"]).toBe("#fb5a4b");
 });
+
+const ROLES: Record<string, string> = {
+  keyword: "#9a86ff", string: "#46d889", function: "#ffb454",
+  type: "#57cdef", number: "#f47ea0", comment: "#6a6a6a",
+  punctuation: "#9a9a9a", variable: "#ededed",
+};
+
+test("every syntax role has a TextMate scope rule with its color", () => {
+  const used = theme.tokenColors.flatMap(r => r.settings.foreground ? [r.settings.foreground] : []);
+  for (const hex of Object.values(ROLES)) {
+    expect(used).toContain(hex);
+  }
+});
+
+test("comments are italic in both layers", () => {
+  const tm = theme.tokenColors.find(r => r.scope.includes("comment"));
+  expect(tm?.settings.fontStyle).toBe("italic");
+  const sem = theme.semanticTokenColors["comment"];
+  expect(typeof sem === "object" && sem.fontStyle).toBe("italic");
+});
+
+test("semantic tokens cover the core roles", () => {
+  for (const key of ["keyword", "string", "number", "function", "type", "variable"]) {
+    expect(theme.semanticTokenColors[key]).toBeDefined();
+  }
+});
