@@ -10,6 +10,8 @@ export function alpha(hex: string, aa: string): string {
 export function buildTheme(p: Palette = palette) {
   const colors: Record<string, string> = {
     ...baseColors(p),
+    ...accentColors(p),
+    ...noShadow(p),
   };
   return {
     name: "Blackout",
@@ -18,6 +20,33 @@ export function buildTheme(p: Palette = palette) {
     colors,
     tokenColors: [] as Array<{ scope: string[]; settings: { foreground?: string; fontStyle?: string } }>,
     semanticTokenColors: {} as Record<string, string | { foreground?: string; fontStyle?: string }>,
+  };
+}
+
+function accentColors(p: Palette): Record<string, string> {
+  return {
+    "focusBorder": p.accent,
+    "editorCursor.foreground": p.accent,
+    "tab.activeBorder": p.accent,
+    "tab.activeBorderTop": p.accent,
+    "activityBar.activeBorder": p.accent,
+    "activityBarBadge.background": p.accent,
+    "activityBarBadge.foreground": p.bg,
+    "badge.background": p.accent,
+    "badge.foreground": p.bg,
+    "textLink.foreground": p.accent,
+    "textLink.activeForeground": p.accentBright,
+    "progressBar.background": p.accent,
+    "statusBarItem.remoteBackground": p.accent,
+    "statusBarItem.remoteForeground": p.bg,
+    "selection.background": alpha(p.accent, "44"),
+  };
+}
+
+function noShadow(p: Palette): Record<string, string> {
+  return {
+    "widget.shadow": p.transparent,
+    "scrollbar.shadow": p.transparent,
   };
 }
 
