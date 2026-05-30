@@ -1,0 +1,16 @@
+{
+  "name": "Blackout",
+  "type": "dark",
+  "colors": {
+    "editor.background": "#000000",
+    "editor.foreground": "#ededed",
+    "sideBar.background": "#000000",
+    "activityBar.background": "#000000",
+    "statusBar.background": "#000000"
+  },
+  "tokenColors": [
+    { "scope": ["keyword"], "settings": { "foreground": "#9a86ff" } },
+    { "scope": ["string"], "settings": { "foreground": "#46d889" } },
+    { "scope": ["comment"], "settings": { "foreground": "#6a6a6a", "fontStyle": "italic" } }
+  ]
+}
