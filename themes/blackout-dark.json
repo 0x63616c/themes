@@ -1,16 +1,33 @@
 {
   "name": "Blackout",
   "type": "dark",
+  "semanticHighlighting": true,
   "colors": {
+    "foreground": "#ededed",
+    "descriptionForeground": "#8a8a8a",
+    "errorForeground": "#fb5a4b",
     "editor.background": "#000000",
     "editor.foreground": "#ededed",
     "sideBar.background": "#000000",
+    "sideBar.foreground": "#8a8a8a",
+    "sideBar.border": "#1a1a1a",
     "activityBar.background": "#000000",
-    "statusBar.background": "#000000"
+    "activityBar.foreground": "#ededed",
+    "activityBar.inactiveForeground": "#5a5a5a",
+    "activityBar.border": "#1a1a1a",
+    "statusBar.background": "#000000",
+    "statusBar.foreground": "#8a8a8a",
+    "statusBar.border": "#1a1a1a",
+    "panel.background": "#000000",
+    "panel.border": "#1a1a1a",
+    "terminal.background": "#000000",
+    "terminal.foreground": "#ededed",
+    "titleBar.activeBackground": "#000000",
+    "titleBar.activeForeground": "#ededed",
+    "titleBar.border": "#1a1a1a",
+    "editorGroupHeader.tabsBackground": "#000000",
+    "editorGroup.border": "#1a1a1a"
   },
-  "tokenColors": [
-    { "scope": ["keyword"], "settings": { "foreground": "#9a86ff" } },
-    { "scope": ["string"], "settings": { "foreground": "#46d889" } },
-    { "scope": ["comment"], "settings": { "foreground": "#6a6a6a", "fontStyle": "italic" } }
-  ]
+  "tokenColors": [],
+  "semanticTokenColors": {}
 }
