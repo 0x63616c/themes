@@ -14,6 +14,15 @@ test("core surfaces are pure black", () => {
   }
 });
 
+test("occurrence highlights have no outline boxes", () => {
+  for (const key of [
+    "editor.wordHighlightBorder", "editor.wordHighlightStrongBorder",
+    "editor.selectionHighlightBorder",
+  ]) {
+    expect(theme.colors[key]).toBe("#00000000");
+  }
+});
+
 test("default foreground is set", () => {
   expect(theme.colors["editor.foreground"]).toBe("#ededed");
   expect(theme.colors["foreground"]).toBe("#ededed");
