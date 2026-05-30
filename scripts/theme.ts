@@ -14,6 +14,8 @@ export function buildTheme(p: Palette = palette) {
     ...noShadow(p),
     ...editorDetail(p),
     ...chromeColors(p),
+    ...gitAndDiff(p),
+    ...terminalColors(p),
   };
   return {
     name: "Blackout",
@@ -22,6 +24,52 @@ export function buildTheme(p: Palette = palette) {
     colors,
     tokenColors: [] as Array<{ scope: string[]; settings: { foreground?: string; fontStyle?: string } }>,
     semanticTokenColors: {} as Record<string, string | { foreground?: string; fontStyle?: string }>,
+  };
+}
+
+function gitAndDiff(p: Palette): Record<string, string> {
+  return {
+    "gitDecoration.addedResourceForeground": p.success,
+    "gitDecoration.modifiedResourceForeground": p.warning,
+    "gitDecoration.deletedResourceForeground": p.error,
+    "gitDecoration.untrackedResourceForeground": p.success,
+    "gitDecoration.ignoredResourceForeground": p.fgFaint,
+    "gitDecoration.conflictingResourceForeground": p.kw,
+    "editorGutter.addedBackground": p.success,
+    "editorGutter.modifiedBackground": p.warning,
+    "editorGutter.deletedBackground": p.error,
+    "diffEditor.insertedTextBackground": alpha(p.success, "20"),
+    "diffEditor.removedTextBackground": alpha(p.error, "20"),
+    "diffEditor.insertedLineBackground": alpha(p.success, "14"),
+    "diffEditor.removedLineBackground": alpha(p.error, "14"),
+    "editorError.foreground": p.error,
+    "editorWarning.foreground": p.warning,
+    "editorInfo.foreground": p.accent,
+    "minimapGutter.addedBackground": p.success,
+    "minimapGutter.modifiedBackground": p.warning,
+    "minimapGutter.deletedBackground": p.error,
+  };
+}
+
+function terminalColors(p: Palette): Record<string, string> {
+  return {
+    "terminalCursor.foreground": p.accent,
+    "terminal.ansiBlack": p.bg,
+    "terminal.ansiBrightBlack": p.lineNr,
+    "terminal.ansiRed": p.error,
+    "terminal.ansiBrightRed": p.errorBright,
+    "terminal.ansiGreen": p.success,
+    "terminal.ansiBrightGreen": p.str,
+    "terminal.ansiYellow": p.warning,
+    "terminal.ansiBrightYellow": p.fnBright,
+    "terminal.ansiBlue": p.accent,
+    "terminal.ansiBrightBlue": p.accentBright,
+    "terminal.ansiMagenta": p.kw,
+    "terminal.ansiBrightMagenta": p.kwBright,
+    "terminal.ansiCyan": p.type,
+    "terminal.ansiBrightCyan": p.typeBright,
+    "terminal.ansiWhite": p.ansiWhite,
+    "terminal.ansiBrightWhite": p.fg,
   };
 }
 

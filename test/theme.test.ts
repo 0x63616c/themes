@@ -49,3 +49,12 @@ test("chrome surfaces stay black with white primary button", () => {
   expect(theme.colors["input.background"]).toBe("#000000");
   expect(theme.colors["quickInput.background"]).toBe("#000000");
 });
+
+test("git + terminal map to the semantic palette", () => {
+  expect(theme.colors["gitDecoration.addedResourceForeground"]).toBe("#34d399");
+  expect(theme.colors["gitDecoration.modifiedResourceForeground"]).toBe("#ffb454");
+  expect(theme.colors["gitDecoration.deletedResourceForeground"]).toBe("#fb5a4b");
+  expect(theme.colors["terminal.ansiBlue"]).toBe("#0a84ff");
+  expect(theme.colors["terminal.ansiGreen"]).toBe("#34d399");
+  expect(theme.colors["terminal.ansiRed"]).toBe("#fb5a4b");
+});
