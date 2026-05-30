@@ -103,7 +103,7 @@ function chromeColors(p: Palette): Record<string, string> {
     "list.focusOutline": p.accent,
     "button.background": p.neutral,
     "button.foreground": p.bg,
-    "button.hoverBackground": "#d4d4d4",
+    "button.hoverBackground": p.neutralHover,
     "button.secondaryBackground": p.currentLine,
     "button.secondaryForeground": p.fg,
     "input.background": p.bg,

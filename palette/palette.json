@@ -31,5 +31,6 @@
   "bracket1": "#6f9bff",
   "bracket2": "#e0b06a",
   "bracket3": "#5cc593",
-  "ansiWhite": "#cfcfcf"
+  "ansiWhite": "#cfcfcf",
+  "neutralHover": "#d4d4d4"
 }

@@ -92,3 +92,59 @@ test("semantic tokens cover the core roles", () => {
     expect(theme.semanticTokenColors[key]).toBeDefined();
   }
 });
+
+import palette from "../palette/palette.json";
+
+function srgb(c: number) {
+  const x = c / 255;
+  return x <= 0.03928 ? x / 12.92 : Math.pow((x + 0.055) / 1.055, 2.4);
+}
+function luminance(hex: string) {
+  const r = parseInt(hex.slice(1, 3), 16);
+  const g = parseInt(hex.slice(3, 5), 16);
+  const b = parseInt(hex.slice(5, 7), 16);
+  return 0.2126 * srgb(r) + 0.7152 * srgb(g) + 0.0722 * srgb(b);
+}
+function contrast(a: string, b: string) {
+  const la = luminance(a), lb = luminance(b);
+  const [hi, lo] = la > lb ? [la, lb] : [lb, la];
+  return (hi + 0.05) / (lo + 0.05);
+}
+
+const paletteValues = new Set(Object.values(palette));
+
+test("every color in output is a palette color (opaque) or palette+alpha", () => {
+  const values = [
+    ...Object.values(theme.colors),
+    ...theme.tokenColors.flatMap(r => r.settings.foreground ? [r.settings.foreground] : []),
+  ];
+  for (const v of values) {
+    const base = v.length === 9 ? v.slice(0, 7) : v;
+    expect(paletteValues.has(base) || base === "#000000").toBe(true);
+  }
+});
+
+test("every palette role is referenced somewhere", () => {
+  const serialized = JSON.stringify(theme);
+  for (const [name, hex] of Object.entries(palette)) {
+    if (name === "transparent") continue;
+    expect(serialized.includes(hex)).toBe(true);
+  }
+});
+
+test("text and tokens clear the contrast floor on black", () => {
+  expect(contrast(palette.fg, palette.bg)).toBeGreaterThanOrEqual(4.5);
+  for (const hex of [palette.kw, palette.str, palette.fn, palette.type, palette.num]) {
+    expect(contrast(hex, palette.bg)).toBeGreaterThanOrEqual(3);
+  }
+});
+
+test("shape is a valid theme document", () => {
+  expect(theme.type).toBe("dark");
+  expect(typeof theme.colors).toBe("object");
+  expect(Array.isArray(theme.tokenColors)).toBe(true);
+  for (const rule of theme.tokenColors) {
+    expect(Array.isArray(rule.scope)).toBe(true);
+    expect(typeof rule.settings).toBe("object");
+  }
+});
