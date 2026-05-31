@@ -137,7 +137,7 @@
     "terminal.ansiRed": "#fb5a4b",
     "terminal.ansiBrightRed": "#ff7a6e",
     "terminal.ansiGreen": "#34d399",
-    "terminal.ansiBrightGreen": "#46d889",
+    "terminal.ansiBrightGreen": "#34d399",
     "terminal.ansiYellow": "#ffb454",
     "terminal.ansiBrightYellow": "#ffc679",
     "terminal.ansiBlue": "#0a84ff",
@@ -189,7 +189,7 @@
         "punctuation.definition.string"
       ],
       "settings": {
-        "foreground": "#46d889"
+        "foreground": "#34d399"
       }
     },
     {
@@ -198,7 +198,7 @@
         "constant.character.escape"
       ],
       "settings": {
-        "foreground": "#46d889"
+        "foreground": "#34d399"
       }
     },
     {
@@ -320,10 +320,10 @@
   ],
   "semanticTokenColors": {
     "keyword": "#9a86ff",
-    "string": "#46d889",
+    "string": "#34d399",
     "number": "#f47ea0",
     "boolean": "#f47ea0",
-    "regexp": "#46d889",
+    "regexp": "#34d399",
     "function": "#ffb454",
     "method": "#ffb454",
     "function.declaration": "#ffb454",

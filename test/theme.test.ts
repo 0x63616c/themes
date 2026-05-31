@@ -79,7 +79,7 @@ test("bracket pairs cycle 3 muted hues", () => {
 });
 
 const ROLES: Record<string, string> = {
-  keyword: "#9a86ff", string: "#46d889", function: "#ffb454",
+  keyword: "#9a86ff", string: "#34d399", function: "#ffb454",
   type: "#57cdef", number: "#f47ea0", comment: "#6a6a6a",
   punctuation: "#9a9a9a", variable: "#ededed",
 };
