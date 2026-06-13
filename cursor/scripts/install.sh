@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Link the theme into Cursor and/or VS Code, wherever they're installed.
 set -euo pipefail
-SRC="$(cd "$(dirname "$0")/.." && pwd)"
+SRC="$(cd "$(dirname "$0")/.." && pwd)"  # <repo>/cursor
 NAME="blackout-theme"
 installed=0
 for dir in "$HOME/.cursor/extensions" "$HOME/.vscode/extensions" "$HOME/.vscode-insiders/extensions"; do

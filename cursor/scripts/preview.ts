@@ -1,3 +1,4 @@
+import { join } from "node:path";
 import palette from "../palette/palette.json";
 
 // 50 punchy string-color candidates, anchored on Blackout's existing jewel tones
@@ -226,5 +227,5 @@ const html = `<!doctype html>
 </body>
 </html>`;
 
-await Bun.write("preview.html", html);
+await Bun.write(join(import.meta.dir, "../preview.html"), html);
 console.log("Wrote preview.html");
