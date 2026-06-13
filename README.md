@@ -42,20 +42,24 @@ bun run build
 
 ## OpenCode — Blackout (TUI)
 
-A true-black TUI theme for OpenCode. Symlinked to `~/.config/opencode/themes/`.
+A true-black TUI theme for OpenCode. Loaded via the global Opencode plugin config.
 
-## OpenCode — Lucent Orgn+ (desktop)
+## OpenCode — Lucent Orng++ (TUI)
 
-Opaque-solid variant of the built-in `lucent-orng` desktop theme. Same orange accent palette with a clean `#0a0a0a` dark neutral (no warm tint).
+Opaque-solid variant of the built-in `lucent-orng` theme, with transparent surfaces removed.
 
 | File | Purpose |
 |---|---|
+| `package.json` | Opencode plugin manifest that exposes the custom themes |
 | `lucent-orng.json` | Reference copy of the built-in theme |
-| `lucent-orng-plusplus.json` | Variant with transparency removed |
+| `lucent-orng-plusplus.json` | TUI variant with opaque surfaces |
 
-Set in `~/.config/opencode/tui.json`:
+Global config:
 ```json
-"theme": "lucent-orng-plusplus"
+{
+  "theme": "lucent-orng-plusplus",
+  "plugin": ["/Users/calum/code/github.com/0x63616c/themes"]
+}
 ```
 
 ## License
