@@ -160,6 +160,8 @@
     {
       "scope": [
         "comment",
+        "comment.line.documentation",
+        "comment.block.documentation",
         "punctuation.definition.comment"
       ],
       "settings": {
@@ -341,6 +343,10 @@
     "decorator": "#ffb454",
     "operator": "#9a9a9a",
     "comment": {
+      "foreground": "#6a6a6a",
+      "fontStyle": "italic"
+    },
+    "comment.documentation": {
       "foreground": "#6a6a6a",
       "fontStyle": "italic"
     }
