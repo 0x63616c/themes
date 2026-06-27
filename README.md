@@ -7,6 +7,7 @@ Custom themes for Cursor, VS Code, and OpenCode.
 ```
 cursor/         → Cursor & VS Code themes (package.json, install script, build pipeline)
 opencode/       → OpenCode desktop and TUI theme files
+antinote/       → Antinote (notes app) theme files
 ```
 
 ## Cursor / VS Code — Blackout
@@ -61,6 +62,25 @@ Global config:
   "plugin": ["/Users/calum/code/github.com/0x63616c/themes"]
 }
 ```
+
+## Antinote — Blackout
+
+A true-black theme for [Antinote](https://antinote.io). Same Blackout palette as the editor themes.
+
+| File | Purpose |
+|---|---|
+| `blackout.json` | The Blackout theme |
+| `example.json` | Stock theme schema, kept as a field reference |
+| `sync.sh` | Copies themes into the Antinote container |
+
+Antinote is sandboxed and won't follow symlinks out of its container, so themes are **copied**, not linked:
+
+```bash
+cd antinote
+./sync.sh
+```
+
+Then reload the theme in Antinote. Edit `blackout.json`, re-run `sync.sh`, reload.
 
 ## License
 
